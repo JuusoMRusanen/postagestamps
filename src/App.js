@@ -62,14 +62,11 @@ export default function App() {
         <ThemeProvider theme={tyylit}>
           <CssBaseline />
           <Valikko />
-          
           <Routes>
-            <Route path="/" element={<Navigate to="./Selaa" />} />
-            <Route path="/Etusivu" element={<Etusivu />} />
+            <Route path="/" element={<Etusivu />} />
             <Route path="/Selaa" element={<Selaa />} />
             <Route path="/Selaa/:postimerkki_id" element={<Postimerkki />} />
           </Routes>
-          
         </ThemeProvider>
         </BrowserRouter>
     </div>
