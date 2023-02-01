@@ -3,7 +3,7 @@ import Selaa from './components/Selaa';
 import Etusivu from './components/Etusivu';
 import Postimerkki from './components/Postimerkki';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 export default function App() {
 
@@ -58,17 +58,16 @@ export default function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <ThemeProvider theme={tyylit}>
           <CssBaseline />
           <Valikko />
           <Routes>
             <Route path="/" element={<Etusivu />} />
+            <Route path="/Etusivu" element={<Etusivu />} />
             <Route path="/Selaa" element={<Selaa />} />
             <Route path="/Selaa/:postimerkki_id" element={<Postimerkki />} />
           </Routes>
         </ThemeProvider>
-        </BrowserRouter>
     </div>
   );
 }
