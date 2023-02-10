@@ -2,6 +2,7 @@ import { Button, Table, TableBody, TableCell, TableContainer, TableRow, Containe
 import postimerkit from './postimerkit';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTheme } from "@mui/material";
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 function Postimerkki(props) {
 
@@ -30,7 +31,7 @@ const rivit = [
 ]
 
 return (
-    <Container>
+    <Container style={tyylit.lisatietoKontti} >
         <Typography style={tyylit.otsikkoPostimerkki}>{merkki.merkin_nimi}</Typography>
         <img 
             src={merkki.kuvan_url} 
@@ -53,31 +54,20 @@ return (
             </Table>
         </TableContainer>
         
-        {(location.state)
-        ?   <Button
-                fullWidth
-                style={tyylit.nappiPostimerkki}
-                component={Link}
-                to={"../Selaa"}
-                    state={{ 
-                        alku : location.state.alku, 
-                        loppu : location.state.loppu 
-                    }}
-            >Palaa</Button>
-
-        :   <Button
-                fullWidth
-                style={tyylit.nappiPostimerkki}
-                component={Link}
-                to={"../Selaa"}
-                    state={{ 
-                        alku : 0, 
-                        loppu : 20
-                    }}
-            >Palaa</Button>
-        }
-        
-
+        <Button
+            variant="contained"
+            fullWidth
+            style={tyylit.nappiPostimerkki}
+            component={Link}
+            to={"../Selaa"}
+                state={{ 
+                    alku : location.state ? location.state.alku : 0, 
+                    loppu : location.state ? location.state.loppu : 20 
+                }}
+            >
+            <KeyboardReturnIcon/>
+            Palaa
+        </Button>
     </Container>
 );
 }
